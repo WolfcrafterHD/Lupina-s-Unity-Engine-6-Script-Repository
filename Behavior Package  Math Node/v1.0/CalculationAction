@@ -1,0 +1,111 @@
+/*
+ * Lupinus
+ *
+ * 25.11.2025
+ *
+ * This is a node for calculation
+ * you can calculate a value with another value,
+ * with the output variable being the blackboard variable that's been placed first
+ * 
+ * the valueOp (the Operation Input) is String, so be sure to type correctly, or it won't work
+ *
+ * set the boolean to true if you want to use integer values, false if you want to use float values
+ * 
+ * for examples: I want to add 5 to my blackboard integer bbIntVar with the value 10, I would Input:
+ * Use an Int? true ! Do += Operation [ int ( bbIntVar , 5 ) ] [ float ( 0 , 0 ) ]
+ *
+ * the output would be bbIntVar = 15
+ *
+ * the node returns failure if either the operator is written wrong,
+ * or when the calculation would have caused a DivideByZeroException or Infinity error!
+ */
+
+using System;
+using Unity.Behavior;
+using UnityEngine;
+using Action = Unity.Behavior.Action;
+using Unity.Properties;
+[Serializable, GeneratePropertyBag]
+[NodeDescription(name: "calculation", story: "Use an Int? [useInt] ! Do [valueOp] Operation [ int ( [valueI1] , [valueI2] ) ] [ float ( [valueF1] , [valueF2] )", category: "Action", id: "a5d835b1cbb8491c19d97dd8c1d7404b")]
+
+public partial class CalculationAction : Action
+{
+    [SerializeReference] public BlackboardVariable<bool> UseInt;
+    [SerializeReference] public BlackboardVariable<string> ValueOp;
+    [SerializeReference] public BlackboardVariable<int> ValueI1;
+    [SerializeReference] public BlackboardVariable<int> ValueI2;
+    [SerializeReference] public BlackboardVariable<float> ValueF1;
+    [SerializeReference] public BlackboardVariable<float> ValueF2;
+
+    protected override Status OnStart()
+    {
+        if (Operation()) return Status.Success;
+        return Status.Failure;
+    }
+
+    private bool Operation()
+    {
+        switch (ValueOp.Value)
+        {
+            case "-=":
+                Subtract();
+                return true;
+            case "+=":
+                Add();
+                return true;
+            case "*=":
+                Multiply();
+                return true;
+            case "/=":
+                return Divide();
+            case "%=":
+                return Modulo();
+        }
+        return false;
+    }
+    
+    private void Subtract()
+    {
+        if (UseInt.Value) ValueI1.Value -= ValueI2.Value;
+        else ValueF1.Value -= ValueF2.Value;
+    }
+
+    private void Add()
+    {
+        if (UseInt.Value) ValueI1.Value += ValueI2.Value;
+        else ValueF1.Value += ValueF2.Value;
+    }
+
+    private void Multiply()
+    {
+        if (UseInt.Value) ValueI1.Value *= ValueI2.Value;
+        else ValueF1.Value *= ValueF2.Value;
+    }
+
+    private bool Divide()
+    {
+        if (ValueI2.Value == 0) return false;
+        if (Math.Abs(ValueF2.Value) < float.Epsilon) return false;
+        if (UseInt.Value) ValueI1.Value /= ValueI2.Value;
+        else ValueF1.Value /= ValueF2.Value;
+        return true;
+    }
+
+    private bool Modulo()
+    {
+        if (ValueI2.Value == 0) return false;
+        if (Math.Abs(ValueF2.Value) < float.Epsilon) return false;
+        if (UseInt.Value) ValueI1.Value %= ValueI2.Value;
+        else ValueF1.Value = Mathf.Repeat(ValueF1.Value, ValueF2.Value);
+        return true;
+    }
+    
+    protected override Status OnUpdate()
+    {
+        return Status.Success;
+    }
+
+    protected override void OnEnd()
+    {
+    }
+}
