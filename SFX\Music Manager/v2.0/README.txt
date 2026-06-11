@@ -3,6 +3,15 @@ this is the documentation of the Audio Manager V2.0
 You might also find some comments in the code that can help you out.
 You'll need the SaintsFields Extension for this to work, you can get it for free here: https://assetstore.unity.com/packages/tools/utilities/saints-field-269741
 
+Some Qirks of this Audio Manager System:
+- Only one Audio of the Music Category can play at any given time.
+- Music will loop unless you spesifically use the "public void LetMusicPlayOutAndEnd()" function. 
+- Any Audio of a different Category will have thier Loop Property set to false.
+- After recompailing your scripts you won't be able to see added Elements in Audio Libs on any Audio Socket. Hop in and out of Playmode to fix that.
+
+
+>>so I dont fogo<<
+
 You will need add a empty game Object and add you Audio Source with your prefered Settings
 Don't worry about the loop parameter this'll be done / undone depending if you set the category of the AudioLib (more about that later) to Music / !Music.
 Then turn it into a prefab. 
