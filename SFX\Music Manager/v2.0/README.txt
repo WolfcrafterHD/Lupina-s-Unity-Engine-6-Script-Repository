@@ -13,7 +13,64 @@ Some Qirks of this Audio Manager System:
 - Only Audio of the Category Music can be 2D, everything else will be set to 3D sound.
 - ALL Audio will play on Awake.
 
+How to use:
+- prepare audio mixers
+  - create a audio mixer
+  - create audio mixer subgroups, following structure is recomended:
+{
+  - Master
+    - Concrete
+      - SFX
+      - Voice
+      - Ambiente
+    - Meta
+      - Music
+      - UI
+}
+  - expose the parameters for Volume and Pitch for every Audio Mixer Groups, following parameter naming recomended:
+{
+  PitchOfxy for Pitch Parameter
+  VolumeOfxy for Volume Parameter
+}
+  - create as many Snapshots with different effects
+    WARNING: Do not Snapshot Pitch or Volume changes
 
+- prepare Audios
+  - spawn in a empty object
+  - add a audio source
+  - turn it into a prefab
+  - copy and past the prefab until you have enougth to accommodate all your audio clips
+  - turn the settings to your liking, however folloing paramters ought to be Ignored: Output, PlayOnAwake, Loop, Spatial Blend
+    WARNING: if you set named Parameters they WILL be overwirtten
+
+- prepare AudioLibraries
+  - create as many Instances of the Scriptable Object to accommodate your needs, I recomend Naming (and later ordering them) like this:
+{
+  BiomeAmbientes
+  HurtSounds
+  Footsteps
+  ....
+}
+
+- prepare AudioGroups
+  - create as many Instances of the Scriptable Object to accommodate your needs, I recomend naming (and later ordering them) like this:
+{
+  FemaleHurtSounds
+  MaleHurtSounds
+  CowHurtSounds
+}
+  - set the Category to the fitting choise, I recomend following:
+{
+  SFX -> ment for non Vocal Sounds e.g. A door Opening, Footsteps, a Radio Prop
+  Voice -> ment for Vocal Sounds with a directly discernable source e.g. Voice Lines of Characters, HurtSounds, Barks of a Pet Dog
+  Ambience -> ment for long, built to loop localized noises without a discernable source e.g. the wind blowing, the noise of a water fall, birds chirping
+  Music -> ment for long, bult to loop Global (2D Audio) Music e.g. Background Music
+  UI -> ment for Global (2D Audio) sfx in the context of the UI and Menus e.g. a button press confirm sound  
+}
+
+
+    
+  
 >>so I dont fogo<<
 
 You will need add a empty game Object and add you Audio Source with your prefered Settings
