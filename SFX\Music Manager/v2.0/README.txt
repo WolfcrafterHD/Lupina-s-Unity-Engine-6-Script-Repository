@@ -9,7 +9,8 @@ Some Qirks of this Audio Manager System:
 - It's recomended to clear the AmbienceCache often.
 - Musi amd Ambience will loop unless you spesifically tell them to stop. 
 - Any Audio of a different Category will have thier Loop Property set to false.
-- Audio Sapwn at the location of the GameObject with the AudioSocket Component it was called from, not from where the comand was execued;
+- Audio Sapwn at the location of the GameObject with the AudioSocket Component it was called from, not from where the comand was execued.
+- Only Audio of the Category Music can be 2D, everything else will be set to 3D sound.
 
 
 >>so I dont fogo<<
