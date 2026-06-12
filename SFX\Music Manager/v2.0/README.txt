@@ -1,7 +1,8 @@
 Hello, 
 this is the documentation of the Audio Manager V2.0
 You might also find some comments in the code that can help you out.
-You'll need the SaintsFields Extension for this to work, you can get it for free here: https://assetstore.unity.com/packages/tools/utilities/saints-field-269741
+You'll need the SaintsFields Extension (around Version 5.18.6) for this to work, 
+you can get it for free here: https://assetstore.unity.com/packages/tools/utilities/saints-field-269741
 
 Some Qirks of this Audio Manager System:
 - Only one Audio of the Music Category can play at any given time.
