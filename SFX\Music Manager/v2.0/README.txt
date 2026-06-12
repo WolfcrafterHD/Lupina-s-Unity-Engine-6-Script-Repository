@@ -11,6 +11,7 @@ Some Qirks of this Audio Manager System:
 - Any Audio of a different Category will have thier Loop Property set to false.
 - Audio Sapwn at the location of the GameObject with the AudioSocket Component it was called from, not from where the comand was execued.
 - Only Audio of the Category Music can be 2D, everything else will be set to 3D sound.
+- ALL Audio will play on Awake.
 
 
 >>so I dont fogo<<
