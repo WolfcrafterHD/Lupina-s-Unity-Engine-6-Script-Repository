@@ -7,8 +7,9 @@ you can get it for free here: https://assetstore.unity.com/packages/tools/utilit
 Some Qirks of this Audio Manager System:
 - Only one Audio of the Music Category can play at any given time.
 - It's recomended to clear the AmbienceCache often.
-- Musi amd Ambience will loop unless you spesifically use the "" function. 
+- Musi amd Ambience will loop unless you spesifically tell them to stop. 
 - Any Audio of a different Category will have thier Loop Property set to false.
+- Audio Sapwn at the location of the GameObject with the AudioSocket Component it was called from, not from where the comand was execued;
 
 
 >>so I dont fogo<<
