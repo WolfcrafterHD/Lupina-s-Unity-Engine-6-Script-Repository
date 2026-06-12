@@ -6,9 +6,9 @@ you can get it for free here: https://assetstore.unity.com/packages/tools/utilit
 
 Some Qirks of this Audio Manager System:
 - Only one Audio of the Music Category can play at any given time.
-- Music will loop unless you spesifically use the "public void LetMusicPlayOutAndEnd()" function. 
+- It's recomended to clear the AmbienceCache often.
+- Musi amd Ambience will loop unless you spesifically use the "" function. 
 - Any Audio of a different Category will have thier Loop Property set to false.
-- After recompailing your scripts you won't be able to see added Elements in Audio Libs on any Audio Socket. Hop in and out of Playmode to fix that.
 
 
 >>so I dont fogo<<
