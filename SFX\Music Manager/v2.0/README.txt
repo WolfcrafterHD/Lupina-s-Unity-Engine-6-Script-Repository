@@ -70,6 +70,8 @@ How to use:
 }
   - Confirm Changes by pressing the "Update" Button.
     WARNING: This has to be done EVERY TIME YOU DO CHANGES or they will not apply, even if it looks as if.
+    ANOTHER WARNING: If you create a Librari for the FIRST TIME, ENSURE that there is a component AudioManager somewhere,
+    with exactly ONE AudioMixerGroup assinged to every Catergory (more on that later)
   - Add the Audio Goups to the fitting AudioLibraries.
     
   
