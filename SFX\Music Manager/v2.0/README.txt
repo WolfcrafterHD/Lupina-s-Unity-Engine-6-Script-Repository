@@ -69,8 +69,7 @@ How to use:
   Music -> ment for long, bult to loop Global (2D Audio) Music e.g. Background Music
   UI -> ment for Global (2D Audio) sfx in the context of the UI and Menus e.g. a button press confirm sound  
 }
-  - Confirm Changes by pressing the "Update" Button.
-    WARNING: This has to be done EVERY TIME YOU DO CHANGES or they will not apply, even if it looks as if.
+    WARNING: Changes to anything only Applay after pressing the [UPDATE AUDIO SYSTEM BUTTON]
     ANOTHER WARNING: If you create a Librari for the FIRST TIME, ENSURE that there is a component AudioManager somewhere,
     with exactly ONE AudioMixerGroup assinged to every Catergory (more on that later)
   - Add the Audio Goups to the fitting AudioLibraries.
