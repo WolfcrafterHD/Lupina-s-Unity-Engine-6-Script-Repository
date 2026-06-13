@@ -42,10 +42,11 @@ How to use:
   - turn it into a prefab
   - copy and past the prefab until you have enougth to accommodate all your audio clips
   - turn the settings to your liking, however folloing paramters ought to be Ignored: Output, PlayOnAwake, Loop, Spatial Blend
-    WARNING: if you set named Parameters they WILL be overwirtten
+    WARNING: if you set the named Parameters they WILL be overwirtten
 
 - prepare AudioLibraries
   - create as many Instances of the Scriptable Object to accommodate your needs, I recomend Naming (and later ordering them) like this:
+  - WARNING: All AudioLibraries MUST be put into the Serelized Array on the AudioManager Script to work (more on that later).
 {
   BiomeAmbientes
   HurtSounds
