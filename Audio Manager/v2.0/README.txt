@@ -45,6 +45,7 @@ How to use:
   - copy and past the prefab until you have enougth to accommodate all your audio clips
   - turn the settings to your liking, however folloing paramters ought to be Ignored: Output, PlayOnAwake, Loop, Spatial Blend
     WARNING: if you set the named Parameters they WILL be overwirtten
+    INFO: The system adds 0.1f to spacial blend parameter when it's supposed to be 3D, so you have Room to play around with it in a Range of 0.1f to 1.0f
 
 - prepare AudioLibraries
   - create as many Instances of the Scriptable Object to accommodate your needs, I recomend Naming (and later ordering them) like this:
