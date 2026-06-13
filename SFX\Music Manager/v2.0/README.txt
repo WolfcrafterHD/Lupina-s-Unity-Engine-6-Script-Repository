@@ -12,6 +12,7 @@ Some Qirks of this Audio Manager System:
 - Audio Sapwn at the location of the GameObject with the AudioSocket Component it was called from, not from where the comand was execued.
 - Only Audio of the Category Music can be 2D, everything else will be set to 3D sound.
 - ALL Audio will play on Awake.
+- You may only work with ONE AudioMixer, you need to Organize with AudioMixerGroups
 
 How to use:
 - prepare audio mixers
