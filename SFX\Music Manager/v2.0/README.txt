@@ -39,6 +39,7 @@ How to use:
 
 - prepare Audios
   - spawn in a empty object
+  - reset the transform component
   - add a audio source
   - turn it into a prefab
   - copy and past the prefab until you have enougth to accommodate all your audio clips
