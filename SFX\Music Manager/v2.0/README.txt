@@ -13,6 +13,7 @@ Some Qirks of this Audio Manager System:
 - Only Audio of the Category Music can be 2D, everything else will be set to 3D sound.
 - ALL Audio will play on Awake.
 - You may only work with ONE AudioMixer, you need to Organize with AudioMixerGroups
+- If you want to assing a Reference at game start via GetCompnent NEVER do in void Awake, do so in void Start, else you get the NullReference Error
 
 How to use:
 - prepare audio mixers
