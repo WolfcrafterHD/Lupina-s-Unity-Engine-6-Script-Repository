@@ -72,23 +72,56 @@ How to use:
   Music -> ment for long, bult to loop Global (2D Audio) Music e.g. Background Music
   UI -> ment for Global (2D Audio) sfx in the context of the UI and Menus e.g. a button press confirm sound  
 }
-    WARNING: Changes to anything only Applay after pressing the [UPDATE AUDIO SYSTEM BUTTON]
-    ANOTHER WARNING: If you create a Librari for the FIRST TIME, ENSURE that there is a component AudioManager somewhere,
-    with exactly ONE AudioMixerGroup assinged to every Catergory (more on that later)
+  - WARNING: Changes to anything only Applay after pressing the [UPDATE AUDIO SYSTEM BUTTON]
+  - ANOTHER WARNING: If you create a Library for the FIRST TIME, ENSURE that there is a component AudioManager somewhere, with exactly ONE AudioMixerGroup assinged to every Catergory (more on that later)
   - Add the Audio Goups to the fitting AudioLibraries.
-    
-  
->>so I dont fogo<<
 
-You will need add a empty game Object and add you Audio Source with your prefered Settings
-Don't worry about the loop parameter this'll be done / undone depending if you set the category of the AudioLib (more about that later) to Music / !Music.
-Then turn it into a prefab. 
-Since Unity can't spawn in AudioSources by them self, the "Audio Clips" (wich some Vars in the Code are named after) are actually the GameObjects / Prefabs 
-we're making right now!
-I suggest you copy and paste it a few times and exchange Audio Clips as needed for a faster Workflow.
+- prepare the AudioManager Script
+  - fill all refrences out.
+  - Under Audio Mixer Group Data, Fill out the Volume / Pitch sections out with the exposed parameter of that Audio Mixer Group, A TYPRO WILL RESULT IN A ERROR/ NONE              FUNCTUNALITY
+  - IMPORTANT: Ensure every Category has NOT MORE OR LESS than ONE Audio Mixer Group
+  - ANOTHER IMORTANT: Note that only AudioLibrarys are ables to bne used wich are added into the List.
+  - INCREDABLY FUCKING IMPORTANT: No mather where you do a change on the Audio ALAWAYS press die UPDATE AUDIO SYSTEM Button after you are done, else the changes don't apply
 
-Then you add them to Instances of the "AudioLib" Scriptable Object. Group them like "CharXYVoicelines" "FemaleHurtSounds" "ForestBiomMusic" etc.
-Set the Category in the Dropdown to the fitting Category (e.g. set "ForestBiomMusic" to Category Music).
-However know that only one Sound of the Category Music can play at a time, should you call 2 then the older one gets deleated.
+- prepare the Audio Socket Script on all you Game Objects which you want to have play audio.
+- IMPORTANT: After adding emelents press: "CONFIRM SYSTEM NAME" if you want to acsess that element you'll bed the String that apears in the System Name Slot above it.
+- TIPP: Name the Elements in a way were you can read recognise them by name alone later. Note that the System Name will have additional Suffixes depending on you choosen        Options.
 
->Work in Progress<
+- prepare you Coustom Script
+  - how this is too be done can be seen in the Audio Demo Script /Audio Tester Script.
+    Note that the functions below start are only show how you'd call the funcitons within them, theres no need to copy the functions Labeld with [Button("...")] one to one.
+
+AVILABLE FUNCTIONS:
+- Note that the Audio Manager is a Singelton, so you *could* call the functions from there if oyu want more control, HOWEVER I do NOT recomend this, Instead call the functions   via the Audio Soket Component like shown in the Audio Demo / Audio Tester Script.
+
+- ClearCache(AudioCache)
+  - this clears the selected Audio Cache, this should also kill all sounds playing in it
+  - AduioCache is a coustom Enum
+  - call it so -> nameOfAudioSocketVar.ClearCache(AudioCache.AudioCacheOfYourChoise);
+
+- LetLoopPlayAndEnd(AudioCache)
+  - this clears the selected Audio Cache, however the currently playing sounds are allowed to play out before being killed
+  - AudioCAche is a coustom Enum
+  - call it so -> nameOfAudioSocketVar.LetLoopPlayAndEnd(AudioCache.AudioCacheOfYourChoise);
+
+- Blend()
+  - this blends two or more snapshots
+  - note that you can only use elements you've added in the corresponding AudioSocket
+  - call it so -> DictonaryYouSavedTheDataToFromTheAudioSocket[SystemNameOfYourBlendableElement].Blend();
+
+- Transition()
+  - this transitions from one to another Snapshot
+  - note that you can only use elements you've added in the corresponding AudioSocket
+  - call it so -> DictonaryYouSavedTheDataToFromTheAudioSocket[SystemNameOfYourTransitionElement].Transition();
+
+- SetAudioMixerGroupVolume(AudioMixerGroup, Float)
+  - this sets the Volume from you AudioMixer to the Wanted Volume
+  - call it so -> nameOfAudioSocketVar.SetAudioMixerGroupVolume(YourAudioMixerOfChoise, YourFloatValueOfChoise)
+
+- SetAudioMixerGroupPitch(AudioMixerGroup, Float)
+  - this sets the Pitch from you AudioMixer to the Wanted Pitch
+  - call it so -> nameOfAudioSocketVar.SetAudioMixerGroupPitch(YourAudioMixerOfChoise, YourFloatValueOfChoise)
+
+- Play()
+ - this plays any wanted Audio Element
+ - call it so -> DictonaryYouSavedTheDataToFromTheAudioSocket[SystemNameOfYourAudioElement].Play();
