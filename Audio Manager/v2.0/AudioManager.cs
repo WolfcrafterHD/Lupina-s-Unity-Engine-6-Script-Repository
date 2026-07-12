@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
                 Destroy(temp1, temp1.GetComponent<AudioSource>().clip.length);
                 break;
         }
-        AssigningToCache(pAudioClip, pCategory);
+        AssigningToCache(temp1, pCategory);
     }
 
     public void PlayRandomAudio(AudioGroup pAudioGroup, Transform pLocation)
