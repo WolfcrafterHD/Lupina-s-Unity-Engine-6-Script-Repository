@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour
     public void PlayAudio(GameObject pAudioClip, Transform pLocation,Category pCategory)
     {
         GameObject temp1 = Instantiate(pAudioClip, pLocation);
+        float temp2 = temp1.GetComponent<AudioSource>().clip.pitch;
         switch (pCategory)
         {
             case Category.Music:
@@ -57,7 +58,10 @@ public class AudioManager : MonoBehaviour
                 //no need for the destruct call
                 break;
             default:
-                Destroy(temp1, temp1.GetComponent<AudioSource>().clip.length);
+                if (pitch < 0 or pitch > 0)
+                    Destroy(temp1, temp1.GetComponent<AudioSource>().clip.length / pitch);
+                else
+                    Destroy(temp1, temp1.GetComponent<AudioSource>().clip.length);
                 break;
         }
         AssigningToCache(temp1, pCategory);
